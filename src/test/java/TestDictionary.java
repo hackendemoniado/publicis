@@ -19,7 +19,7 @@ public class TestDictionary {
     }
 
     @Test
-    public void testCountTheAountOfEnglishWords(){
+    public void testCountTheAmountOfEnglishWords(){
         Permutation permutationChallenge = new Permutation();
         ArrayList<String> permutationList = permutationChallenge.permute("music");
         Dictionary dictionary = Dictionary.getInstance();
@@ -29,8 +29,21 @@ public class TestDictionary {
                 englishwords.add(w);
             }
         }
-        System.out.println(englishwords.size());
         assert  englishwords.size() == 8;
+    }
+
+    @Test
+    public void testEnglishWordsItIsNotPresentOnDictionary(){
+        Permutation permutationChallenge = new Permutation();
+        ArrayList<String> permutationList = permutationChallenge.permute("pork");
+        Dictionary dictionary = Dictionary.getInstance();
+        ArrayList<String> englishwords = new ArrayList<>();
+        for (String w: permutationList){
+            if (dictionary.isEnglishWord(w)){
+                englishwords.add(w);
+            }
+        }
+        assert  englishwords.size() == 0;
     }
 
     @Test
